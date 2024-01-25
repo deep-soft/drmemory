@@ -1,5 +1,5 @@
 /* **********************************************************
- * Copyright (c) 2010-2021 Google, Inc.  All rights reserved.
+ * Copyright (c) 2010-2024 Google, Inc.  All rights reserved.
  * Copyright (c) 2009-2010 VMware, Inc.  All rights reserved.
  * **********************************************************/
 
@@ -965,7 +965,7 @@ client_handle_realloc_null(app_pc pc, dr_mcontext_t *mc)
 app_pc
 client_handle_free(malloc_info_t *info, byte *tofree, dr_mcontext_t *mc,
                    app_pc free_routine, void *routine_set_data, bool for_reuse
-                   _IF_WINDOWS(ptr_int_t *auxarg INOUT))
+                   _IF_WINDOWS(ptr_int_t *auxarg DR_PARAM_INOUT))
 {
     return tofree;
 }
@@ -1293,7 +1293,7 @@ insert_instr_counter(void *drcontext, instrlist_t *bb,
 
 static dr_emit_flags_t
 event_bb_app2app(void *drcontext, void *tag, instrlist_t *bb,
-                         bool for_trace, bool translating, void **user_data OUT)
+                         bool for_trace, bool translating, void **user_data DR_PARAM_OUT)
 {
     /* we pass bi among all 4 phases */
     instru_info_t *ii = thread_alloc(drcontext, sizeof(*ii), HEAPSTAT_PERBB);
