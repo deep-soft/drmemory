@@ -61,10 +61,10 @@ jobs:
 
     - name: Download Packages
       shell: powershell
+      #  (New-Object System.Net.WebClient).DownloadFile("https://sourceforge.net/projects/doxygen/files/rel-1.8.19/doxygen-1.8.19.windows.x64.bin.zip", "c:\projects\install\doxygen.zip")
       run: |
         md c:\projects\install
         (New-Object System.Net.WebClient).DownloadFile("https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip", "c:\projects\install\ninja.zip")
-        (New-Object System.Net.WebClient).DownloadFile("https://sourceforge.net/projects/doxygen/files/rel-1.8.19/doxygen-1.8.19.windows.x64.bin.zip", "c:\projects\install\doxygen.zip")
 
     - name: Run Suite
       working-directory: ${{ github.workspace }}
@@ -72,8 +72,8 @@ jobs:
         echo ------ Setting up paths ------
         7z x c:\projects\install\ninja.zip -oc:\projects\install\ninja > nul
         set PATH=c:\projects\install\ninja;%PATH%
-        7z x c:\projects\install\doxygen.zip -oc:\projects\install\doxygen > nul
-        set PATH=c:\projects\install\doxygen;%PATH%
+        rem 7z x c:\projects\install\doxygen.zip -oc:\projects\install\doxygen > nul
+        rem set PATH=c:\projects\install\doxygen;%PATH%
         dir "c:\Program Files (x86)\WiX Toolset"*
         set PATH=C:\Program Files (x86)\WiX Toolset v3.11\bin;%PATH%
         call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars32.bat"
@@ -102,10 +102,10 @@ jobs:
 
     - name: Download Packages
       shell: powershell
+      # (New-Object System.Net.WebClient).DownloadFile("https://sourceforge.net/projects/doxygen/files/rel-1.8.19/doxygen-1.8.19.windows.x64.bin.zip", "c:\projects\install\doxygen.zip")
       run: |
         md c:\projects\install
         (New-Object System.Net.WebClient).DownloadFile("https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip", "c:\projects\install\ninja.zip")
-        (New-Object System.Net.WebClient).DownloadFile("https://sourceforge.net/projects/doxygen/files/rel-1.8.19/doxygen-1.8.19.windows.x64.bin.zip", "c:\projects\install\doxygen.zip")
 
     - name: Run Suite
       working-directory: ${{ github.workspace }}
@@ -113,8 +113,8 @@ jobs:
         echo ------ Setting up paths ------
         7z x c:\projects\install\ninja.zip -oc:\projects\install\ninja > nul
         set PATH=c:\projects\install\ninja;%PATH%
-        7z x c:\projects\install\doxygen.zip -oc:\projects\install\doxygen > nul
-        set PATH=c:\projects\install\doxygen;%PATH%
+        rem 7z x c:\projects\install\doxygen.zip -oc:\projects\install\doxygen > nul
+        rem set PATH=c:\projects\install\doxygen;%PATH%
         dir "c:\Program Files (x86)\WiX Toolset"*
         set PATH=C:\Program Files (x86)\WiX Toolset v3.11\bin;%PATH%
         call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars32.bat"
@@ -143,10 +143,10 @@ jobs:
 
     - name: Download Packages
       shell: powershell
+      # (New-Object System.Net.WebClient).DownloadFile("https://sourceforge.net/projects/doxygen/files/rel-1.8.19/doxygen-1.8.19.windows.x64.bin.zip", "c:\projects\install\doxygen.zip")
       run: |
         md c:\projects\install
         (New-Object System.Net.WebClient).DownloadFile("https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip", "c:\projects\install\ninja.zip")
-        (New-Object System.Net.WebClient).DownloadFile("https://sourceforge.net/projects/doxygen/files/rel-1.8.19/doxygen-1.8.19.windows.x64.bin.zip", "c:\projects\install\doxygen.zip")
 
     - name: Run Suite
       working-directory: ${{ github.workspace }}
@@ -154,8 +154,8 @@ jobs:
         echo ------ Setting up paths ------
         7z x c:\projects\install\ninja.zip -oc:\projects\install\ninja > nul
         set PATH=c:\projects\install\ninja;%PATH%
-        7z x c:\projects\install\doxygen.zip -oc:\projects\install\doxygen > nul
-        set PATH=c:\projects\install\doxygen;%PATH%
+        rem 7z x c:\projects\install\doxygen.zip -oc:\projects\install\doxygen > nul
+        rem set PATH=c:\projects\install\doxygen;%PATH%
         dir "c:\Program Files (x86)\WiX Toolset"*
         set PATH=C:\Program Files (x86)\WiX Toolset v3.11\bin;%PATH%
         call "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars32.bat"
