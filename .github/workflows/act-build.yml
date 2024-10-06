@@ -46,12 +46,12 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: deep-soft/checkout@v4
       with:
         submodules: recursive
 
     # Cancel any prior runs for a PR (but do not cancel master branch runs).
-    - uses: n1hility/cancel-previous-runs@v2
+    - uses: deep-soft/cancel-previous-runs@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
       if: ${{ github.event_name == 'pull_request' }}
@@ -87,12 +87,12 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: deep-soft/checkout@v4
       with:
         submodules: recursive
 
     # Cancel any prior runs for a PR (but do not cancel master branch runs).
-    - uses: n1hility/cancel-previous-runs@v2
+    - uses: deep-soft/cancel-previous-runs@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
       if: ${{ github.event_name == 'pull_request' }}
@@ -128,12 +128,12 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: deep-soft/checkout@v4
       with:
         submodules: recursive
 
     # Cancel any prior runs for a PR (but do not cancel master branch runs).
-    - uses: n1hility/cancel-previous-runs@v2
+    - uses: deep-soft/cancel-previous-runs@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
       if: ${{ github.event_name == 'pull_request' }}
@@ -166,7 +166,7 @@ jobs:
 
 # zip release begin
     - name: Create Zip Archive Release
-      uses: deep-soft/zip-release@v2
+      uses: deep-soft/zip-release@v4
       with:
         type: 'zip'
         filename: '${{ env.TAG_NAME }}-${{ env.VERSION }}-${{ job.name }}.zip'
@@ -178,14 +178,14 @@ jobs:
 
     - name: Upload zip
       continue-on-error: true
-      uses: deep-soft/upload-artifact@main
+      uses: deep-soft/upload-artifact@v4
       with:
         name: '${{ env.TAG_NAME }}-${{ env.VERSION }}-${{ job.name }}'
         path: '${{ env.TAG_NAME }}-${{ env.VERSION }}-${{ job.name }}.zip'
 
     - name: Publish
       continue-on-error: true
-      uses: deep-soft/action-gh-release@v1
+      uses: deep-soft/action-gh-release@v2.1
       with:
         tag_name: ${{ env.TAG_NAME }}-${{ env.VERSION }}
         files: |
