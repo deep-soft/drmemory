@@ -215,7 +215,6 @@ jobs:
     - name: Build Package
       working-directory: ${{ github.workspace }}
       shell: cmd
-      #   perl tests/runsuite_wrapper.pl travis use_ninja
       run: |
         echo ------ Setting up paths ------
         7z x c:\projects\install\ninja.zip -oc:\projects\install\ninja > nul
@@ -226,7 +225,7 @@ jobs:
         echo ------ Running suite ------
         echo PATH is "%PATH%"
         echo Running in directory "%CD%"
-        perl tests/runsuite_wrapper.pl travis use_ninja 64_only release_only
+        perl tests/runsuite_wrapper.pl travis use_ninja
       env:
         CI_TARGET: package
         VERSION_NUMBER: ${{ steps.version.outputs.version_number }}
