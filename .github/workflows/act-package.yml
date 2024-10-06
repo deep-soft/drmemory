@@ -123,7 +123,7 @@ jobs:
   ###########################################################################
   # Mac tarball with x86-64 build:
   osx:
-    runs-on: macos-11
+    runs-on: macos-12
 
     steps:
     - uses: deep-soft/checkout@v4
@@ -173,7 +173,7 @@ jobs:
   ###########################################################################
   # Windows .zip and .msi with 32-bit and 64-bit x86 builds:
   windows:
-    runs-on: windows-2022
+    runs-on: windows-2019
 
     steps:
     - uses: deep-soft/checkout@v4
