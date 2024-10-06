@@ -173,7 +173,7 @@ jobs:
   ###########################################################################
   # Windows .zip and .msi with 32-bit and 64-bit x86 builds:
   windows:
-    runs-on: windows-2019
+    runs-on: windows-2022
 
     steps:
     - uses: deep-soft/checkout@v4
