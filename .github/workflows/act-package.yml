@@ -91,6 +91,7 @@ jobs:
       # We should find a way to share (xref DRi#1565).
       # We support setting the version and build for manual builds.
       # We only use a non-zero build # when making multiple manual builds in one day.
+      # echo "::set-output name=version_number::${VERSION_NUMBER}"
       run: |
         if test -z "${{ github.event.inputs.version }}"; then
           export VERSION_NUMBER="2.6.$((`git log -n 1 --format=%ct` / (60*60*24)))"
@@ -102,7 +103,7 @@ jobs:
         if [ "${{ github.event.inputs.build }}" -ne 0 ]; then
           export VERSION_NUMBER="${VERSION_NUMBER}-${{ github.event.inputs.build }}"
         fi
-        echo "::set-output name=version_number::${VERSION_NUMBER}"
+        echo "version_number=${VERSION_NUMBER}" >> $GITHUB_OUTPUT
 
     - name: Build Package
       working-directory: ${{ github.workspace }}
@@ -139,6 +140,7 @@ jobs:
     - name: Get Version
       id: version
       # XXX: See x86 job comments on sharing the default ver# with CMakeLists.txt.
+      # echo "::set-output name=version_number::${VERSION_NUMBER}"
       run: |
         if test -z "${{ github.event.inputs.version }}"; then
           export PATCHLEVEL=$((`git log -n 1 --format=%ct` / (60*60*24)))
@@ -152,7 +154,7 @@ jobs:
         if [ "${{ github.event.inputs.build }}" -ne 0 ]; then
           export VERSION_NUMBER="${VERSION_NUMBER}-${{ github.event.inputs.build }}"
         fi
-        echo "::set-output name=version_number::${VERSION_NUMBER}"
+        echo "version_number=${VERSION_NUMBER}" >> $GITHUB_OUTPUT
 
     - name: Build Package
       working-directory: ${{ github.workspace }}
@@ -194,6 +196,7 @@ jobs:
     - name: Get Version
       id: version
       # XXX: See x86 job comments on sharing the default ver# with CMakeLists.txt.
+      # echo "::set-output name=version_number::${VERSION_NUMBER}"
       run: |
         if test -z "${{ github.event.inputs.version }}"; then
           export VERSION_NUMBER="2.6.$((`git log -n 1 --format=%ct` / (60*60*24)))"
@@ -205,7 +208,7 @@ jobs:
         if [ "${{ github.event.inputs.build }}" -ne 0 ]; then
             export VERSION_NUMBER="${VERSION_NUMBER}-${{ github.event.inputs.build }}"
         fi
-        echo "::set-output name=version_number::${VERSION_NUMBER}"
+        echo "version_number=${VERSION_NUMBER}" >> $GITHUB_OUTPUT
 
     - name: Build Package
       working-directory: ${{ github.workspace }}
@@ -260,6 +263,9 @@ jobs:
     - name: Get Version
       id: version
       # XXX: See x86 job comments on sharing the default ver# with CMakeLists.txt.
+      #  echo "::set-output name=version_number::${VERSION_NUMBER}"
+      #  echo "::set-output name=osx_version_number::${OSX_VERSION_NUMBER}"
+      #  echo "::set-output name=version_string::${PREFIX}${VERSION_NUMBER}"
       run: |
         if test -z "${{ github.event.inputs.version }}"; then
           export VERSION_NUMBER="2.6.$((`git log -n 1 --format=%ct` / (60*60*24)))"
@@ -276,9 +282,9 @@ jobs:
           export VERSION_NUMBER="${VERSION_NUMBER}-${{ github.event.inputs.build }}"
           export OSX_VERSION_NUMBER="${OSX_VERSION_NUMBER}-${{ github.event.inputs.build }}"
         fi
-        echo "::set-output name=version_number::${VERSION_NUMBER}"
-        echo "::set-output name=osx_version_number::${OSX_VERSION_NUMBER}"
-        echo "::set-output name=version_string::${PREFIX}${VERSION_NUMBER}"
+        echo "version_number=${VERSION_NUMBER}" >> $GITHUB_OUTPUT
+        echo "osx_version_number=${OSX_VERSION_NUMBER}" >> $GITHUB_OUTPUT
+        echo "version_string=${PREFIX}${VERSION_NUMBER}" >> $GITHUB_OUTPUT
 
     - name: Create Release
       id: create_release
