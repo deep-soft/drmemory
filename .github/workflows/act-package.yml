@@ -292,7 +292,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ steps.version.outputs.version_string }}
-        release_name: ${{ steps.version.outputs.version_string }}
+        name: ${{ steps.version.outputs.version_string }}
         body: |
           Auto-generated periodic build.
         draft: false
