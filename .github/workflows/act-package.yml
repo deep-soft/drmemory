@@ -104,7 +104,7 @@ jobs:
         if [ "${{ github.event.inputs.build }}" -ne 0 ]; then
           export VERSION_NUMBER="${VERSION_NUMBER}-${{ github.event.inputs.build }}"
         fi
-        echo "::set-output name=version_number::${VERSION_NUMBER}"
+        echo "version_number=${VERSION_NUMBER}" >> $GITHUB_OUTPUT
 
     - name: Build Package
       working-directory: ${{ github.workspace }}
@@ -210,7 +210,7 @@ jobs:
         if [ "${{ github.event.inputs.build }}" -ne 0 ]; then
             export VERSION_NUMBER="${VERSION_NUMBER}-${{ github.event.inputs.build }}"
         fi
-        echo "::set-output name=version_number::${VERSION_NUMBER}"
+        echo "version_number=${VERSION_NUMBER}" >> $GITHUB_OUTPUT
 
     - name: Build Package
       working-directory: ${{ github.workspace }}
@@ -282,9 +282,9 @@ jobs:
           export VERSION_NUMBER="${VERSION_NUMBER}-${{ github.event.inputs.build }}"
           export OSX_VERSION_NUMBER="${OSX_VERSION_NUMBER}-${{ github.event.inputs.build }}"
         fi
-        echo "::set-output name=version_number::${VERSION_NUMBER}"
-        echo "::set-output name=osx_version_number::${OSX_VERSION_NUMBER}"
-        echo "::set-output name=version_string::${PREFIX}${VERSION_NUMBER}"
+        echo "version_number=${VERSION_NUMBER}" >> $GITHUB_OUTPUT
+        echo "osx_version_number=${OSX_VERSION_NUMBER}" >> $GITHUB_OUTPUT
+        echo "version_string=${PREFIX}${VERSION_NUMBER}" >> $GITHUB_OUTPUT
 
     - name: Create Release
       id: create_release
